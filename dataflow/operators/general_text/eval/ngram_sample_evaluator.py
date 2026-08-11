@@ -29,7 +29,7 @@ class NgramSampleEvaluator(OperatorABC):
                 "支持中文（字级别）和英文（词级别）模式。\n"
                 "初始化参数：\n"
                 "- ngrams: n-gram长度，默认为5\n"
-                "- language: 处理语言，'zh' 使用字粒度切分，其他使用空格分词，默认为 'en'\n"
+                "- language: 处理语言，'zh' 使用字粒度切分，其他使用空格分词；含 CJK 字符的文本自动使用字粒度切分，默认为 'en'\n"
                 "输出参数：\n"
                 "- NgramScore: n-gram重复比例得分（0到1之间，得分越高表示重复比例越低）"
             )
@@ -39,7 +39,7 @@ class NgramSampleEvaluator(OperatorABC):
                 "Supports Chinese (character-level) and English (word-level) modes.\n\n"
                 "Initialization Parameters:\n"
                 "- ngrams: Length of n-grams, default is 5.\n"
-                "- language: Processing language. 'zh' for character-level splitting, others for whitespace splitting. Default is 'en'.\n\n"
+                "- language: Processing language. 'zh' for character-level splitting, others for whitespace splitting; text containing CJK characters is automatically split at character level. Default is 'en'.\n\n"
                 "Output Parameters:\n"
                 "- NgramScore: N-gram repetition ratio score (0-1, higher score means less repetition/higher originality)."
             )
@@ -54,7 +54,8 @@ class NgramSampleEvaluator(OperatorABC):
         content = re.sub(r'[^\w\s]', '', content)
         
         # --- 根据语言选择切分逻辑 ---
-        if self.language == 'zh':
+        # CJK 文本无空格，需回退到字级切分，否则整句被当单个 token 得 0 分 (issue #396)
+        if self.language == 'zh' or re.search(r'[\u4e00-\u9fff]', content):
             # 中文模式：去除所有空格，按“字”切分
             content = re.sub(r'\s+', '', content)
             tokens = list(content) 
