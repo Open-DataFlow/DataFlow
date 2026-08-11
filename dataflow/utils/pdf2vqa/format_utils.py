@@ -9,7 +9,7 @@ def refine_title(title: str, strict_title_match=False):
         try:
             # 优先提取阿拉伯数字章节编号（如1.1，2等）
             new_title = re.search(r"\d+\.\d+|\d+", title).group()
-        except:    
+        except AttributeError:
             try:
                 # 其次提取中文数字章节编号（如六、二十四等）
                 new_title = re.search(r'[一二三四五六七八九零十百]+', title).group()   

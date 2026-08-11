@@ -144,7 +144,8 @@ Please make sure you have GPU on your machine.
         global_json_data = []
 
         # read mineru content json
-        json_data = json.load(open(mineru_content_json_path, 'r'))
+        with open(mineru_content_json_path, 'r') as f:
+            json_data = json.load(f)
 
         # if output_pic_folder is not exist, create it
         if not os.path.exists(output_pic_folder):
@@ -207,7 +208,8 @@ Please make sure you have GPU on your machine.
         max_page_idx = max(idx_list)
 
         # load img_json
-        img_json = json.load(open(img_json_path, "r"))
+        with open(img_json_path, "r") as f:
+            img_json = json.load(f)
         img_dict = {}
         for item in img_json:
             if item["page_idx"] not in img_dict:
