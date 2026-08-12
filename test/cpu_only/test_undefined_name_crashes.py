@@ -250,3 +250,31 @@ def test_bench_evaluator_handles_non_default_index(compare_method, tmp_path, mon
     evaluator.run(storage=storage, input_question_key="question")
 
     assert storage.dataframe["answer_match_result"].tolist() == [True, False]
+
+
+def test_bench_evaluator_rejects_misaligned_llm_responses():
+    """Every semantic-evaluation prompt must receive exactly one response."""
+    from dataflow.prompts.model_evaluation.general import AnswerJudgePromptQuestion
+    from dataflow.operators.core_text import BenchDatasetEvaluatorQuestion
+
+    class StubLLMServing:
+        def generate_from_input(self, user_inputs, system_prompt=None):
+            return ['{"judgement_result": true}']
+
+    evaluator = BenchDatasetEvaluatorQuestion(
+        compare_method="semantic",
+        llm_serving=StubLLMServing(),
+        prompt_template=AnswerJudgePromptQuestion(),
+    )
+    storage = InMemoryStorage(
+        pd.DataFrame(
+            {
+                "question": ["q1", "q2"],
+                "generated_cot": ["42", "7"],
+                "golden_answer": ["42", "9"],
+            }
+        )
+    )
+
+    with pytest.raises(RuntimeError, match="expected 2, got 1"):
+        evaluator.run(storage=storage, input_question_key="question")

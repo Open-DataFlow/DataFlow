@@ -317,6 +317,13 @@ class BenchDatasetEvaluatorQuestion(OperatorABC):
             user_inputs=inputs,
             system_prompt=self.system_prompt,
         )
+        response_count = 0 if responses is None else len(responses)
+        if response_count != len(inputs):
+            raise RuntimeError(
+                "LLM serving returned an unexpected number of responses: "
+                f"expected {len(inputs)}, got {response_count}."
+            )
+
         results = [self.ResolveResponse(response) for response in responses]
         self._apply_semantic_results(dataframe, valid_rows, responses, results)
         storage.write(dataframe)
