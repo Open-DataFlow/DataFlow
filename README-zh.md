@@ -126,7 +126,22 @@ DataFlow 具备以下优势：
 * **原则化和多类别的算子分类** – 算子被系统地组织到诸如**生成、评估、过滤和精炼**等多个功能类别中，形成了科学的多维分类法，反映了数据准备的不同阶段，并支持精确的算子选择与组合。
 * **用户友好设计，易于调试和上手** – 简化的工作流模式降低了学习曲线，加速了实验进程。
 
-## 🔧 5. 算子如何工作？
+<a id="awesome-dataflow"></a>
+
+## 🌟 5. DataFlow 优秀项目
+
+本板块展示基于 DataFlow 构建，或与 DataFlow 生态系统深度集成的开源项目、研究成果和应用。
+
+### 📦 社区扩展
+
+- **[dataflow-speech-quality](https://github.com/chinaunicom-software-research/dataflow-speech-quality)** [![GitHub Stars](https://img.shields.io/github/stars/chinaunicom-software-research/dataflow-speech-quality?style=social)](https://github.com/chinaunicom-software-research/dataflow-speech-quality)
+  - `语音质量` · `数据清洗` · `去标识化` · `数据标注`
+  - 面向客服语音转写文本的 DataFlow 扩展，支持质量过滤、清洗、去标识化和标注。
+  - **维护者：** Jiapeng Mi · 中国联通软件研究院
+
+欢迎通过 Pull Request 提交基于 DataFlow 的项目。[DataFlow 生态指南](https://opendcai.github.io/DataFlow-Doc/zh/guide/df_ecosystem/)介绍了如何创建 DataFlow 扩展。
+
+## 🔧 6. 算子如何工作？
 
 DataFlow 算子的设计秉持**简单与清晰**的原则。
 
@@ -187,9 +202,9 @@ prompted_generator.run(
 ```
 
 <details>
-<summary><h2>🛠️ 6. 流水线 (点击展开)</h2></summary>
+<summary><h2>🛠️ 7. 流水线 (点击展开)</h2></summary>
 
-### 🔧 6.1 开箱即用的流水线
+### 🔧 7.1 开箱即用的流水线
 
 DataFlow 目前包含的流水线如下：
 - [📝 **文本处理流水线（Text Pipeline）**](https://opendcai.github.io/DataFlow-Doc/zh/guide/textpipeline)：从大规模纯文本（多为网络爬取）中挖掘问答对，用于监督微调和强化学习训练。
@@ -213,11 +228,11 @@ DataFlow 目前包含的流水线如下：
 
 
 
-### ⚙️ 6.2 灵活的算子流水线
+### ⚙️ 7.2 灵活的算子流水线
 
 在此框架下，算子被分为基础算子、通用算子、特定领域算子和评估算子等，支持数据处理和评估功能。详情请参考 [文档](https://OpenDCAI.github.io/DataFlow-Doc/)。
 
-### 🤖 6.3 智能体引导的流水线
+### 🤖 7.3 智能体引导的流水线
 
 * **DataFlow Agent**: 一个智能助手，能够进行数据分析，编写自定义“算子”，并根据特定的任务目标自动将它们编排成“流水线”。
 * [[HuggingFace🤗 **DataFlow Agent** 演示输入与输出]](https://huggingface.co/datasets/Open-Dataflow/dataflow-demo-Agent)
@@ -226,9 +241,9 @@ DataFlow 目前包含的流水线如下：
 
 </details>
 
-## ⚡ 7. 快速开始
+## ⚡ 8. 快速开始
 
-### 🛠️ 7.1 环境配置与安装
+### 🛠️ 8.1 环境配置与安装
 
 > DataFlow 支持 Python >= 3.10 环境，已在 Windows、Linux 和 MacOS 上的 Python 3.10, 3.11, 3.12 版本通过测试。
 
@@ -268,7 +283,7 @@ You are using the latest version: 1.0.0.
 
 ```
 
-#### 🐳 7.2 Docker 安装（备选）
+#### 🐳 8.2 Docker 安装（备选）
 
 我们也提供了 **Dockerfile** 以便部署，并提供 **预构建的 Docker 镜像** 以便立即使用。
 
@@ -312,20 +327,20 @@ dataflow -v
 
 > **注意**: Docker 镜像包含 CUDA 12.4.1 支持，并预装了 vLLM 以实现 GPU 加速。请确保您已安装 [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) 以使用 GPU 功能。
 
-### 🚀 7.3 通过 Google Colab 快速开始
+### 🚀 8.3 通过 Google Colab 快速开始
 
 您可以直接在 Google Colab 上开始您的第一个 DataFlow 翻译项目。
 按照提供的指南，您可以无缝地从简单的翻译示例扩展到更复杂的 DataFlow 流水线。
 
 👉 [通过 Google Colab 开启 DataFlow](https://colab.research.google.com/drive/1haosl2QS4N4HM7u7HvSsz_MnLabxexXl?usp=sharing)
 
-### 📖 7.4 参考项目文档
+### 📖 8.4 参考项目文档
 
 有关详细的**使用说明**和**入门指南**，请访问我们的 [DataFlow 文档](https://OpenDCAI.github.io/DataFlow-Doc/)。
 
 <a name="dfwebui"></a>
 
-### 🖥️ 7.5 DataFlow-WebUI
+### 🖥️ 8.5 DataFlow-WebUI
 
 DataFlow 提供了一个**基于 Web 的 UI (WebUI)**，用于可视化流水线的构建与执行。
 
@@ -343,18 +358,18 @@ dataflow webui
 
 这将自动下载并启动最新的 **DataFlow-WebUI** 并在浏览器中打开（如果未自动打开，请访问 `http://localhost:8000/`）。
 
-#### 📚 7.5.1 WebUI 文档
+#### 📚 8.5.1 WebUI 文档
 
 * 中文: [DataFlow-WebUI 文档: https://wcny4qa9krto.feishu.cn/wiki/F4PDw76uDiOG42k76gGc6FaBnod](https://wcny4qa9krto.feishu.cn/wiki/F4PDw76uDiOG42k76gGc6FaBnod)
 * 英文: [DataFlow-WebUI 文档: https://wcny4qa9krto.feishu.cn/wiki/SYELwZhh9ixcNwkNRnhcLGmWnEg](https://wcny4qa9krto.feishu.cn/wiki/SYELwZhh9ixcNwkNRnhcLGmWnEg)
 
-#### 🛠️ 7.5.2 开发仓库
+#### 🛠️ 8.5.2 开发仓库
 
 * [https://github.com/OpenDCAI/DataFlow-webui](https://github.com/OpenDCAI/DataFlow-webui)
 
-## 🧪 8. 实验结果
+## 🧪 9. 实验结果
 
-### 8.1 DataFlow-Instruct-10k
+### 9.1 DataFlow-Instruct-10k
 
 **DataFlow-Instruct-10K** 是一个由 DataFlow 框架生成的统一多领域指令数据集。它通过跨越数学推理、代码和通用文本指令的多个自动化数据准备流水线构建。每个流水线遵循“生成-评估-过滤-精炼”工作流，以合成和策划高质量的“指令-响应”对。最终的数据集包含约 10K 个样本，为指令微调提供高质量监督，使基座模型能够以更少的训练样本达到全量训练指令模型的性能水平。
 
@@ -374,11 +389,11 @@ dataflow webui
 | + **DataFlow-Instruct-10K** | **46.7** | **78.6** | **76.2** |
 
 <details>
-<summary><h3>🛠️ 8.2 其他流水线结果 (点击展开)</h3></summary>
+<summary><h3>🛠️ 9.2 其他流水线结果 (点击展开)</h3></summary>
 
-#### 8.2.1 文本流水线
+#### 9.2.1 文本流水线
 
-##### 8.2.1.1 预训练数据过滤流水线
+##### 9.2.1.1 预训练数据过滤流水线
 
 从 SlimPajama-627B 语料库中，我们提取了一个 100B-token 子集，并应用了多个 DataFlow 文本预训练过滤器。我们使用 Megatron-DeepSpeed 框架从头开始训练了一个 Qwen2.5-0.5B 模型，训练量为 30B tokens，结果如下：
 
@@ -389,11 +404,11 @@ dataflow webui
 | **FineWeb-Edu-30B** | 26.45 | 45.41 | 27.41 | 38.06 | 50.43 | 25.64 | 35.57 |
 | **DataFlow-30B** | 25.51 | 45.58 | 27.42 | 37.58 | 50.67 | 27.35 | **35.69** |
 
-##### 8.2.1.2 SFT 数据过滤与合成流水线
+##### 9.2.1.2 SFT 数据过滤与合成流水线
 
 为了研究小规模 SFT 数据质量，我们使用 LLaMA-Factory 在 WizardLM 和 Alpaca 数据集上对 Qwen2.5-7B 基座模型进行了微调。对于每个数据集，我们将 5K 个随机采样实例的集合与 5K 个经过 DataFlow SFT 流水线过滤的实例集合进行了比较。此外，我们使用 DataFlow 的 Condor Generator 和 Condor Refiner 流水线合成了一个 15k 大小的数据集 DataFlow-SFT-15K，随后通过 DataFlow 的 SFT 过滤流水线（不包括 Instagram 过滤器）。基准测试包括全面的数学、代码和知识评估套件。
 
-#### 8.2.2 数学基准测试
+#### 9.2.2 数学基准测试
 
 | 方法 | math | gsm8k | aime24 | minerva | olympiad | 平均 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -404,7 +419,7 @@ dataflow webui
 | **DataFlow-SFT-15K (random)** | 72.6 | 89.6 | 13.3 | 37.9 | 32.9 | **49.3** |
 | **DataFlow-SFT-15K (filtered)** | 73.3 | 90.2 | 13.3 | 36.0 | 35.9 | **49.7** |
 
-#### 8.2.3 代码基准测试
+#### 9.2.3 代码基准测试
 
 | 方法 | HumanEval | MBPP | 平均 |
 | --- | --- | --- | --- |
@@ -415,7 +430,7 @@ dataflow webui
 | **DataFlow-SFT-15K (random)** | 79.9 | 75.9 | 77.9 |
 | **DataFlow-SFT-15K (filtered)** | 82.9 | 74.9 | **78.9** |
 
-#### 8.2.4 知识基准测试
+#### 9.2.4 知识基准测试
 
 | 方法 | MMLU | C-EVAL | 平均 |
 | --- | --- | --- | --- |
@@ -426,11 +441,11 @@ dataflow webui
 | **DataFlow-SFT-15K (random)** | 72.1 | 80.0 | **76.1** |
 | **DataFlow-SFT-15K (filtered)** | 72.2 | 80.4 | **76.3** |
 
-#### 8.2.5 对话合成流水线
+#### 9.2.5 对话合成流水线
 
 我们使用 DataFlow 的对话生成流水线合成了 DataFlow-Chat-15K，并在其上微调了 Qwen2.5-7B-Base。基准包括 ShareGPT-15K、UltraChat-15K 及其全量版本。我们在特定领域任务 (TopDial, Light) 和通用基准 (MMLU, AlpacaEval, Arena-Hard) 上进行了评估。
 
-##### 8.2.5.1 对话基准测试
+##### 9.2.5.1 对话基准测试
 
 | 模型 | TopDial | Light | 平均 |
 | --- | --- | --- | --- |
@@ -439,7 +454,7 @@ dataflow webui
 | **+ UltraChat-15K** | 7.72 | 6.83 | 7.28 |
 | **+ DataFlow-Chat-15K** | **7.98** | **8.10** | **8.04** |
 
-##### 8.2.5.2 通用基准测试
+##### 9.2.5.2 通用基准测试
 
 | 模型 | MMLU | AlpacaEval | Arena-Hard | 平均 |
 | --- | --- | --- | --- | --- |
@@ -448,7 +463,7 @@ dataflow webui
 | **+ UltraChat-15K** | 72.97 | 3.97 | 0.80 | 25.91 |
 | **+ DataFlow-Chat-15K** | 73.41 | **10.11** | 1.10 | **28.21** |
 
-#### 8.2.6 推理流水线
+#### 9.2.6 推理流水线
 
 我们采用 NuminaMath 数据集作为高质量种子集。我们比较了三种训练源：(1) Open-R1 的随机 10K 子集，(2) Synthetic-1 的随机 10K 子集，以及 (3) 我们使用 DataFlow 构建的 10K 合成 DataFlow-Reasoning-10K 数据集。
 
@@ -462,11 +477,11 @@ dataflow webui
 | 2 Epochs | **+ Open-R1-10k** | 93.9 | 77.2 | 80.0 | 44.1 | 20.9 | 25.4 | 51.0 | 40.7 | 54.2 |
 | 2 Epochs | **+ DataFlow-Reasoning-10K** | 94.4 | 76.6 | 75.0 | 45.2 | 42.9 | 25.7 | 45.4 | 40.0 | **55.7** |
 
-#### 8.2.7 代码流水线
+#### 9.2.7 代码流水线
 
 我们从 Ling-Coder-SFT 语料库中随机抽取了 20k 实例，并通过 DataFlow 代码流水线进行处理。这产生了三个不同规模的精选代码指令数据集：DataFlow-Code-1K, DataFlow-Code-5K, 和 DataFlow-Code-10K，每个数据集旨在为代码生成任务提供高质量、经过流水线精炼的监督信号。我们将我们的合成数据集与 Code-Alpaca-1k 和 Self-OSS-Instruct-SC2-Exec-Filter-1k 进行了对比。
 
-##### 8.2.7.1 在 Qwen2.5-7B-Instruct 上训练
+##### 9.2.7.1 在 Qwen2.5-7B-Instruct 上训练
 
 | 训练数据 | BigCodeBench | LiveCodeBench (v6) | CruxEval (I) | CruxEval (O) | HumanEval+ | 平均 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -477,7 +492,7 @@ dataflow webui
 | **+ DataFlow-Code-5K** | 36.2 | **26.4** | 48.6 | 45.0 | 73.2 | 45.9 |
 | **+ DataFlow-Code-10K** | **36.8** | 26.0 | **48.8** | **45.4** | **73.8** | **46.2** |
 
-##### 8.2.7.2 在 Qwen2.5-14B-Instruct 上训练
+##### 9.2.7.2 在 Qwen2.5-14B-Instruct 上训练
 
 | 训练数据 | BigCodeBench | LiveCodeBench (v6) | CruxEval (I) | CruxEval (O) | HumanEval+ | 平均 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -490,7 +505,7 @@ dataflow webui
 
 </details>
 
-## 📄 9. 出版物
+## 📄 10. 出版物
 
 我们的团队发表了以下论文，构成了 DataFlow 系统的核心组件：
 
@@ -510,7 +525,7 @@ dataflow webui
 <img src="./static/logo/baichuan.png" alt="Baichuan" height="30"/>
 <img src="./static/logo/ant_group.png" alt="Ant Group" height="30"/>
 
-## 🏆 10. 奖项与成就
+## 🏆 11. 奖项与成就
 
 我们荣幸地在两项重大国际 AI 竞赛中获得**第一名**，这彰显了 DataFlow 及其推理能力的卓越性与稳健性：
 
@@ -543,17 +558,6 @@ dataflow webui
 </table>
 
 </div>
-
-<a id="awesome-dataflow"></a>
-
-## 🌟 11. 使用 DataFlow 的优秀作品与 DataFlow 生态
-
-本板块重点展示基于 DataFlow 构建或深度集成于 DataFlow 生态系统的**项目、研究成果和应用**。
-
-📌 **精选项目列表**：
-[[Awesome Work Using DataFlow](./awesome_dataflow.md)]
-
-我们热忱欢迎社区通过 **Pull Requests** 贡献新条目。🙌 [详细指南](https://opendcai.github.io/DataFlow-Doc/en/guide/df_ecosystem/) 可以帮助您通过 DataFlow-CLI 创建 DataFlow 扩展仓库。
 
 ## 💐 12. 致谢
 

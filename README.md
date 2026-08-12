@@ -148,8 +148,22 @@ DataFlow offers the following advantages:
 - **Principled and Multi-Category Operator Classification** – Operators are systematically organized into multiple functional categories such as **generation, evaluation, filtering, and refinement**, forming a scientifically grounded, multi-dimensional taxonomy that reflects different stages of data preparation and enables precise operator selection and composition.
 - **User-Friendly Design for Easy Debugging and Onboarding** – Simplified workflow patterns that reduce the learning curve and accelerate experimentation.
 
+<a id="awesome-dataflow"></a>
 
-## 🔧 5. How do operators work？
+## 🌟 5. Awesome DataFlow
+
+This section highlights open-source projects, research works, and applications built with DataFlow or deeply integrated with the DataFlow ecosystem.
+
+### 📦 Community Extensions
+
+- **[dataflow-speech-quality](https://github.com/chinaunicom-software-research/dataflow-speech-quality)** [![GitHub Stars](https://img.shields.io/github/stars/chinaunicom-software-research/dataflow-speech-quality?style=social)](https://github.com/chinaunicom-software-research/dataflow-speech-quality)
+  - `Speech Quality` · `Data Cleaning` · `De-identification` · `Annotation`
+  - A DataFlow extension for filtering, cleaning, de-identifying, and annotating customer-service speech transcripts.
+  - **Maintainer:** Jiapeng Mi · China Unicom Software Research Institute
+
+Have a project built with DataFlow? We welcome community contributions via Pull Requests. See the [DataFlow Ecosystem Guide](https://opendcai.github.io/DataFlow-Doc/en/guide/df_ecosystem/) for guidance on creating a DataFlow extension.
+
+## 🔧 6. How do operators work？
 DataFlow operators are designed with **simplicity and clarity** in mind.
 
 Operators take structured inputs (JSON, JSONL, CSV) and produce high-quality outputs after intelligent processing.
@@ -207,9 +221,9 @@ After running, the operator will append the generated results into output_key. F
 ```
 
 <details>
-<summary><h2>🛠️ 6. Pipelines (Click to expand)</h2></summary>
+<summary><h2>🛠️ 7. Pipelines (Click to expand)</h2></summary>
 
-### 🔧 6.1 Ready-to-Use PipeLines
+### 🔧 7.1 Ready-to-Use PipeLines
 
 Current Pipelines in Dataflow are as follows:
 
@@ -227,11 +241,11 @@ Current Pipelines in Dataflow are as follows:
 - [🤖 **Agentic RAG Pipeline**](https://opendcai.github.io/DataFlow-Doc/en/guide/agenticrag_pipeline/): Identify and extract QA pairs from existing QA datasets or knowledge bases that require external knowledge to answer, for use in downstream training of Agnetic RAG tasks.
   - ![dataflow_agenticRAG_pipeline](https://github.com/user-attachments/assets/65e80dca-f286-495b-abb7-804b3fc34a53)
 
-### ⚙️ 6.2 Flexible Operator PipeLines
+### ⚙️ 7.2 Flexible Operator PipeLines
 
 In this framework, operators are categorized into Fundamental Operators, Generic Operators, Domain-Specific Operators, and Evaluation Operators, etc., supporting data processing and evaluation functionalities. Please refer to the [documentation](https://OpenDCAI.github.io/DataFlow-Doc/) for details.
 
-### 🤖 6.3 Agent Guided Pipelines
+### 🤖 7.3 Agent Guided Pipelines
 
 <!-- Building on top of this, we also provide the -->
 
@@ -246,9 +260,9 @@ In this framework, operators are categorized into Fundamental Operators, Generic
 </details>
 
 
-## ⚡ 7. Quick Start
+## ⚡ 8. Quick Start
 
-### 🛠️ 7.1 Environment Setup and Installation
+### 🛠️ 8.1 Environment Setup and Installation
 > DataFlow supports Python>=3.10 environments, tested passed on Windows, Linux, and MacOS with Python 3.10, 3.11, and 3.12.
 
 Please use the following commands for environment setup and installation👇
@@ -283,7 +297,7 @@ open-dataflow codebase version: 1.0.0
 You are using the latest version: 1.0.0.
 ```
 
-#### 🐳 7.2 Docker Installation (Alternative)
+#### 🐳 8.2 Docker Installation (Alternative)
 
 We also provide a **Dockerfile** for easy deployment and a **pre-built Docker image** for immediate use.
 
@@ -326,14 +340,14 @@ dataflow -v
 
 > **Note**: The Docker image includes CUDA 12.4.1 support and comes with vLLM pre-installed for GPU acceleration. Make sure you have [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) installed to use GPU features.
 
-### 🚀 7.3 Quick Start with Google Colab
+### 🚀 8.3 Quick Start with Google Colab
 You can start your first DataFlow translation project directly on Google Colab.
 By following the provided guidelines, you can seamlessly scale from a simple translation example to more complex DataFlow pipelines.
 
 👉 [Start DataFlow with Google Colab](https://colab.research.google.com/drive/1haosl2QS4N4HM7u7HvSsz_MnLabxexXl?usp=sharing)
 
 
-### 📖 7.4 Reference Project Documentation
+### 📖 8.4 Reference Project Documentation
 
 For detailed **usage instructions** and **getting started guide**, please visit our [DataFlow Documentation](https://OpenDCAI.github.io/DataFlow-Doc/).
 
@@ -341,7 +355,7 @@ For detailed **usage instructions** and **getting started guide**, please visit 
 
 <a name="dfwebui"></a>
 
-### 🖥️ 7.5 DataFlow-WebUI
+### 🖥️ 8.5 DataFlow-WebUI
 DataFlow provides a **Web-based UI (WebUI)** for visual pipeline construction and execution.
 <div style="display: flex; gap: 12px;">
   <img src="https://github.com/user-attachments/assets/b4f172d6-7753-4121-b981-55046a7a9e43" width="45%" />
@@ -356,19 +370,19 @@ dataflow webui
 
 This will automatically download and launch the latest **DataFlow-WebUI** and open it in your browser (`http://localhost:8000/` if it does not open automatically).
 
-#### 📚 7.5.1 WebUI Documentation
+#### 📚 8.5.1 WebUI Documentation
 
 * Chinese: [DataFlow-WebUI Documentation: https://wcny4qa9krto.feishu.cn/wiki/F4PDw76uDiOG42k76gGc6FaBnod](https://wcny4qa9krto.feishu.cn/wiki/F4PDw76uDiOG42k76gGc6FaBnod)
 * English: [DataFlow-WebUI Documentation: https://wcny4qa9krto.feishu.cn/wiki/SYELwZhh9ixcNwkNRnhcLGmWnEg](https://wcny4qa9krto.feishu.cn/wiki/SYELwZhh9ixcNwkNRnhcLGmWnEg)
 
-#### 🛠️ 7.5.2 Development Repository
+#### 🛠️ 8.5.2 Development Repository
 
 * [https://github.com/OpenDCAI/DataFlow-webui](https://github.com/OpenDCAI/DataFlow-webui)
 
 
-## 🧪 8. Experimental Results
+## 🧪 9. Experimental Results
 
-### 8.1 DataFlow-Instruct-10k
+### 9.1 DataFlow-Instruct-10k
 **DataFlow-Instruct-10K** is a unified multi-domain instruction dataset generated by the DataFlow framework. It is constructed through several automated data preparation pipelines spanning mathematical reasoning, code, and general text instructions. Each pipeline follows a generate–evaluate–filter–refine workflow to synthesize and curate high-quality instruction–response pairs. The resulting dataset contains approximately 10K samples and provides high-quality supervision for instruction tuning, enabling base models to approach the performance of fully trained instruct models with significantly fewer training examples. 
 
 For Detailed Experiments setting, please visit our [DataFlow Technical Report](https://arxiv.org/abs/2512.16676).
@@ -389,11 +403,11 @@ For Detailed Experiments setting, please visit our [DataFlow Technical Report](h
 
 
 <details>
-<summary><h3>🛠️ 8.2 Other Pipeline Results (Click to expand)</h3></summary>
+<summary><h3>🛠️ 9.2 Other Pipeline Results (Click to expand)</h3></summary>
 
-#### 8.2.1 Text Pipeline
+#### 9.2.1 Text Pipeline
 
-##### 8.2.1.1 Pre-training data filter pipeline
+##### 9.2.1.1 Pre-training data filter pipeline
 
 From the SlimPajama-627B corpus, we extract a 100B-token subset and apply multiple DataFlow text-pretraining filters. We train a Qwen2.5-0.5B model from scratch for 30B tokens using the Megatron-DeepSpeed framework, the results are as follows:
 
@@ -404,11 +418,11 @@ From the SlimPajama-627B corpus, we extract a 100B-token subset and apply multip
 | **FineWeb-Edu-30B** | 26.45 | 45.41 | 27.41 | 38.06 | 50.43 | 25.64 | 35.57 |
 | **DataFlow-30B** | 25.51 | 45.58 | 27.42 | 37.58 | 50.67 | 27.35 | **35.69** |
 
-##### 8.2.1.2 SFT data filter and synthesis pipeline
+##### 9.2.1.2 SFT data filter and synthesis pipeline
 
 To study small-scale SFT data quality, we fine-tune the Qwen2.5-7B base model using LLaMA-Factory on WizardLM and Alpaca datasets. For each dataset, we compared a randomly sampled set of 5K instances against a set of 5K instances filtered by DataFlow's SFT pipeline. Additionally, we synthesize a 15k-size dataset, DataFlow-SFT-15K, using DataFlow’s Condor Generator and Condor Refiner pipeline, followed by DataFlow’s SFT filtering pipeline (excluding the Instagram filter). Benchmarks include comprehensive Math, Code, and Knowledge evaluation suites.
 
-#### 8.2.2 Math Benchmarks
+#### 9.2.2 Math Benchmarks
 
 | Methods | math | gsm8k | aime24 | minerva | olympiad | Avg |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -419,7 +433,7 @@ To study small-scale SFT data quality, we fine-tune the Qwen2.5-7B base model us
 | **DataFlow-SFT-15K (random)** | 72.6 | 89.6 | 13.3 | 37.9 | 32.9 | **49.3** |
 | **DataFlow-SFT-15K (filtered)** | 73.3 | 90.2 | 13.3 | 36.0 | 35.9 | **49.7** |
 
-#### 8.2.3 Code Benchmarks
+#### 9.2.3 Code Benchmarks
 
 | Methods | HumanEval | MBPP | Avg |
 | --- | --- | --- | --- |
@@ -430,7 +444,7 @@ To study small-scale SFT data quality, we fine-tune the Qwen2.5-7B base model us
 | **DataFlow-SFT-15K (random)** | 79.9 | 75.9 | 77.9 |
 | **DataFlow-SFT-15K (filtered)** | 82.9 | 74.9 | **78.9** |
 
-#### 8.2.4 Knowledge Benchmarks
+#### 9.2.4 Knowledge Benchmarks
 
 | Methods | MMLU | C-EVAL | Avg |
 | --- | --- | --- | --- |
@@ -441,11 +455,11 @@ To study small-scale SFT data quality, we fine-tune the Qwen2.5-7B base model us
 | **DataFlow-SFT-15K (random)** | 72.1 | 80.0 | **76.1** |
 | **DataFlow-SFT-15K (filtered)** | 72.2 | 80.4 | **76.3** |
 
-#### 8.2.5 Conversation Synthesis Pipeline
+#### 9.2.5 Conversation Synthesis Pipeline
 
 We synthesize DataFlow-Chat-15K using DataFlow's conversation-generation pipeline and fine-tune Qwen2.5-7B-Base on it. Baselines include ShareGPT-15K, UltraChat-15K, and their full (non-truncated) versions. We evaluate on domain-specific tasks (TopDial, Light) and general benchmarks (MMLU, AlpacaEval, Arena-Hard).
 
-##### 8.2.5.1 Conversation Benchmarks
+##### 9.2.5.1 Conversation Benchmarks
 
 | Model | TopDial | Light | Avg |
 | --- | --- | --- | --- |
@@ -454,7 +468,7 @@ We synthesize DataFlow-Chat-15K using DataFlow's conversation-generation pipelin
 | **+ UltraChat-15K** | 7.72 | 6.83 | 7.28 |
 | **+ DataFlow-Chat-15K** | **7.98** | **8.10** | **8.04** |
 
-##### 8.2.5.2 General Benchmarks
+##### 9.2.5.2 General Benchmarks
 
 | Model | MMLU | AlpacaEval | Arena-Hard | Avg |
 | --- | --- | --- | --- | --- |
@@ -463,7 +477,7 @@ We synthesize DataFlow-Chat-15K using DataFlow's conversation-generation pipelin
 | **+ UltraChat-15K** | 72.97 | 3.97 | 0.80 | 25.91 |
 | **+ DataFlow-Chat-15K** | 73.41 | **10.11** | 1.10 | **28.21** |
 
-#### 8.2.6 Reasoning Pipeline
+#### 9.2.6 Reasoning Pipeline
 
 We adopt the NuminaMath dataset as a high-quality seed dataset. We compare three training sources: (1) a random 10K subset from Open-R1, (2) a random 10K subset from Synthetic-1, and (3) our 10K synthesized DataFlow-Reasoning-10K dataset constructed using DataFlow.
 
@@ -477,11 +491,11 @@ We adopt the NuminaMath dataset as a high-quality seed dataset. We compare three
 | 2 Epochs | **+ Open-R1-10k** | 93.9 | 77.2 | 80.0 | 44.1 | 20.9 | 25.4 | 51.0 | 40.7 | 54.2 |
 | 2 Epochs | **+ DataFlow-Reasoning-10K** | 94.4 | 76.6 | 75.0 | 45.2 | 42.9 | 25.7 | 45.4 | 40.0 | **55.7** |
 
-#### 8.2.7 Code Pipeline
+#### 9.2.7 Code Pipeline
 
 We randomly sample 20k instances from the Ling-Coder-SFT corpus and process them through the DataFlow Code Pipeline. This yields three curated code instruction datasets of different scales, DataFlow-Code-1K, DataFlow-Code-5K, and DataFlow-Code-10K, each designed to provide high-quality, pipeline-refined supervision signals for code generation tasks. We compare our synthesized datasets against Code-Alpaca-1k and Self-OSS-Instruct-SC2-Exec-Filter-1k.
 
-##### 8.2.7.1 Trained on Qwen2.5-7B-Instruct
+##### 9.2.7.1 Trained on Qwen2.5-7B-Instruct
 
 | Training Data | BigCodeBench | LiveCodeBench (v6) | CruxEval (I) | CruxEval (O) | HumanEval+ | Avg |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -492,7 +506,7 @@ We randomly sample 20k instances from the Ling-Coder-SFT corpus and process them
 | **+ DataFlow-Code-5K** | 36.2 | **26.4** | 48.6 | 45.0 | 73.2 | 45.9 |
 | **+ DataFlow-Code-10K** | **36.8** | 26.0 | **48.8** | **45.4** | **73.8** | **46.2** |
 
-##### 8.2.7.2 Trained on Qwen2.5-14B-Instruct
+##### 9.2.7.2 Trained on Qwen2.5-14B-Instruct
 
 | Training Data | BigCodeBench | LiveCodeBench (v6) | CruxEval (I) | CruxEval (O) | HumanEval+ | Avg |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -505,7 +519,7 @@ We randomly sample 20k instances from the Ling-Coder-SFT corpus and process them
 
 </details>
 
-## 📄 9. Publications
+## 📄 10. Publications
 
 Our team has published the following papers that form core components of the DataFlow system:
 
@@ -526,7 +540,7 @@ Our team has published the following papers that form core components of the Dat
 <img src="./static/logo/baichuan.png" alt="Baichuan" height="30"/>
 <img src="./static/logo/ant_group.png" alt="Ant Group" height="30"/>
 
-## 🏆 10. Awards & Achievements
+## 🏆 11. Awards & Achievements
 
 We are honored to have received **first-place awards** in two major international AI competitions, recognizing the excellence and robustness of DataFlow and its reasoning capabilities:
 
@@ -551,17 +565,6 @@ We are honored to have received **first-place awards** in two major internationa
 </table>
 
 </div>
-
-<a id="awesome-dataflow"></a>
-
-## 🌟 11. Awesome Work Using DataFlow & DataFlow Ecosystem
-
-This section highlights **projects, research works, and applications** built on top of DataFlow or deeply integrated with the DataFlow ecosystem.
-
-**📌 Curated list of featured projects:**
-[[Awesome Work Using DataFlow](./awesome_dataflow.md)]
-
-We warmly welcome the community to contribute new entries via **Pull Requests**. 🙌 [Detailed Guidance](https://opendcai.github.io/DataFlow-Doc/en/guide/df_ecosystem/) can help you creating a Dataflow extension repository from DataFlow-CLI.
 
 ## 💐 12. Acknowledgements
 
