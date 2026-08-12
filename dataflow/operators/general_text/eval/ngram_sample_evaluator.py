@@ -7,12 +7,17 @@ from dataflow.utils.registry import OPERATOR_REGISTRY
 from dataflow import get_logger
 from typing import Literal
 
+_HAN_CHARACTER_PATTERN = re.compile(
+    r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff"
+    r"\U00020000-\U0002fa1f\U00030000-\U000323af]"
+)
+
 @OPERATOR_REGISTRY.register()
 class NgramSampleEvaluator(OperatorABC):
     
-    def __init__(self, ngrams: int = 5, language: Literal['zh', 'en'] = 'en'):
-        if language not in ['zh', 'en']:
-            raise ValueError(f"Unsupported language: '{language}'. Supported options are: ['zh', 'en'].")
+    def __init__(self, ngrams: int = 5, language: Literal['zh', 'en', 'auto'] = 'en'):
+        if language not in ['zh', 'en', 'auto']:
+            raise ValueError(f"Unsupported language: '{language}'. Supported options are: ['zh', 'en', 'auto'].")
         self.logger = get_logger()
         self.logger.info(f'Initializing {self.__class__.__name__}...')
         self.ngrams = ngrams
@@ -29,7 +34,7 @@ class NgramSampleEvaluator(OperatorABC):
                 "支持中文（字级别）和英文（词级别）模式。\n"
                 "初始化参数：\n"
                 "- ngrams: n-gram长度，默认为5\n"
-                "- language: 处理语言，'zh' 使用字粒度切分，其他使用空格分词；含 CJK 字符的文本自动使用字粒度切分，默认为 'en'\n"
+                "- language: 处理语言；'zh' 使用字粒度切分，'en' 使用空格分词，'auto' 根据每条文本是否包含汉字自动选择，默认为 'en'\n"
                 "输出参数：\n"
                 "- NgramScore: n-gram重复比例得分（0到1之间，得分越高表示重复比例越低）"
             )
@@ -39,7 +44,7 @@ class NgramSampleEvaluator(OperatorABC):
                 "Supports Chinese (character-level) and English (word-level) modes.\n\n"
                 "Initialization Parameters:\n"
                 "- ngrams: Length of n-grams, default is 5.\n"
-                "- language: Processing language. 'zh' for character-level splitting, others for whitespace splitting; text containing CJK characters is automatically split at character level. Default is 'en'.\n\n"
+                "- language: Processing language. 'zh' uses character-level splitting, 'en' uses whitespace splitting, and 'auto' selects per sample based on the presence of Han characters. Default is 'en'.\n\n"
                 "Output Parameters:\n"
                 "- NgramScore: N-gram repetition ratio score (0-1, higher score means less repetition/higher originality)."
             )
@@ -53,9 +58,11 @@ class NgramSampleEvaluator(OperatorABC):
         # 移除标点符号
         content = re.sub(r'[^\w\s]', '', content)
         
-        # --- 根据语言选择切分逻辑 ---
-        # CJK 文本无空格，需回退到字级切分，否则整句被当单个 token 得 0 分 (issue #396)
-        if self.language == 'zh' or re.search(r'[\u4e00-\u9fff]', content):
+        # Auto detection is opt-in so an explicit language mode remains predictable.
+        use_character_tokens = self.language == 'zh' or (
+            self.language == 'auto' and _HAN_CHARACTER_PATTERN.search(content)
+        )
+        if use_character_tokens:
             # 中文模式：去除所有空格，按“字”切分
             content = re.sub(r'\s+', '', content)
             tokens = list(content) 
@@ -64,8 +71,6 @@ class NgramSampleEvaluator(OperatorABC):
             # 默认/英文模式：按“空格”切分
             tokens = content.split()
             join_char = " "
-        # ---------------------------
-
         if len(tokens) < self.ngrams:
             return 0.0
 
