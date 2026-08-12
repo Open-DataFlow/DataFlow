@@ -10,6 +10,7 @@ from tqdm import tqdm
 from dataflow.core  import LLMServingABC
 import re
 import time
+from typing import Optional
 
 
 class APILLMServing_request(LLMServingABC):
@@ -74,7 +75,7 @@ class APILLMServing_request(LLMServingABC):
         }
 
 
-    def format_response(self, response: dict, is_embedding: bool = False) -> str:
+    def format_response(self, response: dict, is_embedding: bool = False) -> Optional[str]:
         """Format API response, supporting both embedding and chat completion modes"""
         
         # Handle embedding requests
