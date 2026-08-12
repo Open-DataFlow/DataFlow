@@ -469,7 +469,7 @@ class PythonExecutor:
             # Worker process died, restart it
             try:
                 self.persistent_worker.terminate()
-            except:
+            except Exception:
                 pass
             self.persistent_worker = PersistentWorker()
     
@@ -478,7 +478,7 @@ class PythonExecutor:
         if self.persistent_worker is not None:
             try:
                 self.persistent_worker.terminate()
-            except:
+            except Exception:
                 pass
         self.persistent_worker = PersistentWorker()
 
@@ -625,7 +625,7 @@ class PythonExecutor:
                         # If reset fails, try restarting worker
                         try:
                             self._restart_worker()
-                        except:
+                        except Exception:
                             pass
             except Exception as error:
                 print(f"Error in batch_apply: {error}")

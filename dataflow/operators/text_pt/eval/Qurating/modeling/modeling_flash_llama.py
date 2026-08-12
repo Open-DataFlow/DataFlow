@@ -531,7 +531,7 @@ class LlamaModel(LlamaPreTrainedModel):
         ):
             try: # for flash-attn latest version
                 hidden_states, unpad_indices, cu_seqlens, max_seqlen, _ = unpad_input(hidden_states, attention_mask)
-            except: # for flash-attn 2.3.3 verstion
+            except Exception:  # for flash-attn 2.3.3 verstion
                 hidden_states, unpad_indices, cu_seqlens, max_seqlen = unpad_input(hidden_states, attention_mask)
             unpadded_lengths = (cu_seqlens, max_seqlen)
         else:
