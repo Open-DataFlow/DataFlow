@@ -11,9 +11,8 @@ built with or on top of **[DataFlow](https://github.com/OpenDCAI/DataFlow)** —
 
 > Full repositories that **directly use DataFlow** as a core dependency.
 
-- **[Project Name](https://github.com/yourname/project)**  
-  Short description of the project.  
-  _e.g., Uses DataFlow pipelines to curate high-quality SFT and RLHF data._
+- **[dataflow-speech-quality](https://github.com/chinaunicom-software-research/dataflow-speech-quality)**  
+  A DataFlow Extension for speech transcript quality filtering, cleaning, de-identification, and annotation in customer-service scenarios, provided by **Jiapeng Mi** from **China Unicom Software Research Institute**.
 
 ---
 
