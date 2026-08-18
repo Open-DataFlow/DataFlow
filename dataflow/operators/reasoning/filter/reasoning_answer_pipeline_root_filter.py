@@ -16,18 +16,33 @@ class ReasoningAnswerPipelineRootFilter(OperatorABC):
     def get_desc(lang: str = "zh"):
         if lang == "zh":
             return (
-                "根据样本是否具有 Ground Truth 对答案数据进行路由标记。"
-                "算子会尝试从答案字段补充缺失的 Ground Truth，并在输出字段中写入 "
-                "'with_gt' 或 'without_gt'。所有记录通过一次写入传递给下一步骤。"
+                "该算子根据样本是否具有 Ground Truth 添加答案分支标记，"
+                "并尝试从答案字段中提取缺失的 Ground Truth。\n\n"
+                "输入参数：\n"
+                "- input_answer_key：答案字段名，默认为'output'\n"
+                "- input_gt_key：Ground Truth 字段名，默认为'golden_answer'\n"
+                "- output_branch_key：分支标记字段名，默认为'answer_branch'\n\n"
+                "输出行为：\n"
+                "- Ground Truth 存在时标记为'with_gt'\n"
+                "- Ground Truth 缺失时标记为'without_gt'\n"
+                "- 保留全部样本，并通过一次写入传递给下一步骤"
             )
-        if lang == "en":
+        elif lang == "en":
             return (
-                "Annotate answer rows according to whether Ground Truth exists. "
-                "Missing Ground Truth may be extracted from the answer column. "
-                "The output branch column contains 'with_gt' or 'without_gt', "
-                "and all rows are persisted with a single storage write."
+                "This operator labels answer rows according to whether Ground Truth "
+                "is available and attempts to extract missing Ground Truth from the "
+                "answer field.\n\n"
+                "Input Parameters:\n"
+                "- input_answer_key: Answer column, default is 'output'\n"
+                "- input_gt_key: Ground Truth column, default is 'golden_answer'\n"
+                "- output_branch_key: Branch marker column, default is 'answer_branch'\n\n"
+                "Output Behavior:\n"
+                "- Mark rows with Ground Truth as 'with_gt'\n"
+                "- Mark rows without Ground Truth as 'without_gt'\n"
+                "- Preserve all rows and pass them to the next step with a single write"
             )
-        return "Annotate answer rows with Ground Truth routing information."
+        else:
+            return "Annotate answer rows with Ground Truth availability."
 
     def run(
         self,
