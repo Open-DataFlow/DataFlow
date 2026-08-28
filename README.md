@@ -220,6 +220,29 @@ After running, the operator will append the generated results into output_key. F
 ]
 ```
 
+### 🧠 6.1 Named LLM Backends
+
+Besides pointing a serving class at any OpenAI-compatible endpoint, DataFlow ships a few
+pre-configured named backends. For example, `APIOrcaRouterServing` wires the operator
+stack to the [OrcaRouter](https://www.orcarouter.ai) gateway — an OpenAI-compatible AI
+gateway that, like OpenRouter, exposes a provider/model namespace across many models
+through a single endpoint, while also adding adaptive routing, automatic failover,
+zero-markup inference, observability, guardrails, and agent-tool governance behind the
+same endpoint:
+
+```python
+from dataflow.serving import APIOrcaRouterServing
+
+# configure LLM serving with the OrcaRouter gateway
+# api key needs to be set via `export ORCAROUTER_API_KEY=sk-orca-...`
+llm_serving = APIOrcaRouterServing(model_name="orcarouter/auto")
+
+prompted_generator = PromptedGenerator(
+    llm_serving=llm_serving,  # pre-configured LLM backend
+    system_prompt="Please solve this math problem."
+)
+```
+
 <details>
 <summary><h2>🛠️ 7. Pipelines (Click to expand)</h2></summary>
 
